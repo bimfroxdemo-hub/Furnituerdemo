@@ -5,11 +5,34 @@ const Collections = () => {
   const [animate, setAnimate] = useState(false);
   const sectionRef = useRef(null);
 
+  // Inline product data (merge of your JSON)
+  const productData = [
+    { id: 1, image: "1.png", product: "table" },
+    { id: 2, image: "2.png", product: "sofa" },
+    { id: 3, image: "3.png", product: "sofa" },
+    { id: 4, image: "4.png", product: "chair" },
+    { id: 5, image: "5.png", product: "chair" },
+    { id: 6, image: "6.png", product: "comboard" },
+    { id: 7, image: "7.png", product: "Door" },
+    { id: 8, image: "8.png", product: "table" },
+    { id: 9, image: "9.png", product: "Door" },
+    { id: 10, image: "10.png", product: "Door" },
+    { id: 11, image: "11.jpg", product: "bed" },
+    { id: 12, image: "12.jpg", product: "bed" },
+  ];
+
   useEffect(() => {
-    fetch("/product.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .catch((err) => console.error("Error fetching products:", err));
+    // Option 1: Fetch from product.json if exists
+    // fetch("/product.json")
+    //   .then((res) => res.json())
+    //   .then((data) => setProducts(data))
+    //   .catch((err) => {
+    //     console.error("Error fetching products:", err);
+    //     setProducts(productData); // fallback inline data
+    //   });
+
+    // Option 2: Use inline data directly
+    setProducts(productData);
   }, []);
 
   // Scroll animation
@@ -33,7 +56,7 @@ const Collections = () => {
       ref={sectionRef}
       className="min-h-screen bg-gradient-to-r from-zinc-400 to-zinc-800 px-4 sm:px-6 lg:px-16 py-12 sm:py-16"
     >
-      {/* Heading with side-slide + fade-in */}
+      {/* Heading */}
       <h1
         className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-10 text-white transform transition-all duration-700 ${
           animate ? "translate-x-0 opacity-100" : "-translate-x-64 opacity-0"
@@ -54,7 +77,7 @@ const Collections = () => {
                 ? "-translate-x-64 opacity-0"
                 : "translate-x-64 opacity-0"
             } hover:shadow-xl`}
-            style={{ transitionDelay: `${index * 100}ms` }} // staggered animation
+            style={{ transitionDelay: `${index * 100}ms` }}
           >
             <img
               src={product.image}
