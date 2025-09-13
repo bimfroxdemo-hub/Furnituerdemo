@@ -1,0 +1,75 @@
+[
+  {
+    "id":1,
+    "image":"1.png",
+    "product":"table"
+
+  },
+    {
+    "id":2,
+    "image":"2.png",
+    "product":"sofa"
+
+  },
+    {
+    "id":3,
+    "image":"3.png",
+    "product":"sofa"
+
+  },
+    {
+    "id":4,
+    "image":"4.png",
+    "product":"chair"
+
+  },
+    {
+    "id":5,
+    "image":"5.png",
+    "product":"chair"
+
+  },
+    {
+    "id":6,
+    "image":"6.png",
+    "product":"comboard"
+  },
+    {
+    "id":7,
+    "image":"7.png",
+    "product":"Door"
+    
+
+  },
+    {
+    "id":8,
+    "image":"8.png",
+    "product":"table"
+
+  },
+    {
+    "id":9,
+    "image":"9.png",
+    "product":"Door"
+
+  },
+    {
+    "id":10,
+    "image":"10.png",
+    "product":"Door"
+
+  },
+    {
+    "id":11,
+    "image":"11.jpg",
+    "product":"bed"
+
+  },
+    {
+    "id":12,
+    "image":"12.jpg",
+    "product":"bed"
+
+  }
+    
+]
