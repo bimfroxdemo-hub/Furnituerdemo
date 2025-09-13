@@ -5,7 +5,6 @@ const Collections = () => {
   const [animate, setAnimate] = useState(false);
   const sectionRef = useRef(null);
 
-  // Inline product data (merge of your JSON)
   const productData = [
     { id: 1, image: "1.png", product: "table" },
     { id: 2, image: "2.png", product: "sofa" },
@@ -22,20 +21,10 @@ const Collections = () => {
   ];
 
   useEffect(() => {
-    // Option 1: Fetch from product.json if exists
-    // fetch("/product.json")
-    //   .then((res) => res.json())
-    //   .then((data) => setProducts(data))
-    //   .catch((err) => {
-    //     console.error("Error fetching products:", err);
-    //     setProducts(productData); // fallback inline data
-    //   });
-
-    // Option 2: Use inline data directly
     setProducts(productData);
   }, []);
 
-  // Scroll animation
+  // Section fade-in animation
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -56,7 +45,6 @@ const Collections = () => {
       ref={sectionRef}
       className="min-h-screen bg-gradient-to-r from-zinc-400 to-zinc-800 px-4 sm:px-6 lg:px-16 py-12 sm:py-16"
     >
-      {/* Heading */}
       <h1
         className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-10 text-white transform transition-all duration-700 ${
           animate ? "translate-x-0 opacity-100" : "-translate-x-64 opacity-0"
@@ -65,7 +53,6 @@ const Collections = () => {
         Our Collections
       </h1>
 
-      {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
         {products.map((product, index) => (
           <div
@@ -82,6 +69,7 @@ const Collections = () => {
             <img
               src={product.image}
               alt={product.product}
+              loading="lazy" // ← Native lazy loading
               className="w-full h-40 sm:h-48 md:h-56 lg:h-64 object-cover rounded-md mb-3 sm:mb-4 transition-transform duration-300 hover:scale-110"
             />
             <h2 className="text-center text-lg sm:text-xl md:text-2xl font-semibold mb-2 transition duration-300 hover:text-red-400 hover:underline">
