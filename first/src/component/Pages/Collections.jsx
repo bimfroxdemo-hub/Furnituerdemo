@@ -20,7 +20,12 @@ const Collections = () => {
     { id: 12, image: "12.jpg", product: "bed" },
   ];
 
+  // Preload images + set products
   useEffect(() => {
+    productData.forEach((item) => {
+      const img = new Image();
+      img.src = item.image;
+    });
     setProducts(productData);
   }, []);
 
@@ -43,7 +48,7 @@ const Collections = () => {
   return (
     <div
       ref={sectionRef}
-      className="min-h-screen bg-gradient-to-r from-zinc-400 to-zinc-800 px-4 sm:px-6 lg:px-16 py-12 sm:py-16"
+      className="min-h-screen bg-gradient-to-r from-zinc-400 to-zinc-800 px-4 sm:px-6 lg:px-16 py-12 sm:py-16 overflow-x-hidden"
     >
       <h1
         className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-10 text-white transform transition-all duration-700 ${
@@ -69,7 +74,7 @@ const Collections = () => {
             <img
               src={product.image}
               alt={product.product}
-              loading="lazy" // ← Native lazy loading
+              loading={index < 4 ? "eager" : "lazy"} // First 4 eager, rest lazy
               className="w-full h-40 sm:h-48 md:h-56 lg:h-64 object-cover rounded-md mb-3 sm:mb-4 transition-transform duration-300 hover:scale-110"
             />
             <h2 className="text-center text-lg sm:text-xl md:text-2xl font-semibold mb-2 transition duration-300 hover:text-red-400 hover:underline">
