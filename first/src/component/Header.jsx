@@ -8,17 +8,15 @@ export default function Header() {
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
+
+    handleScroll(); // refresh par bhi scroll check
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Toggle mobile menu
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
@@ -36,39 +34,64 @@ export default function Header() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-6 font-medium">
-          <li><a href="#home" className="hover:text-red-500 transition">Home</a></li>
-          <li><a href="#about" className="hover:text-red-500 transition">About</a></li>
-          <li><a href="#collections" className="hover:text-red-500 transition">Collections</a></li>
-          <li><a href="#contact" className="hover:text-red-500 transition">Contact</a></li>
+          <li>
+            <a href="#home" className="hover:text-green-700 transition">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="#about" className="hover:text-green-700 transition">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#collections" className="hover:text-green-700 transition">
+              Collections
+            </a>
+          </li>
+          <li>
+            <a href="#contact" className="hover:text-green-700 transition">
+              Contact
+            </a>
+          </li>
         </ul>
 
-        {/* Mobile Menu Icon */}
-        <div className="md:hidden text-2xl cursor-pointer z-50" onClick={toggleMenu}>
+        {/* Mobile Menu Icon - hamesha visible mobile par */}
+        <div
+          className="md:hidden text-2xl cursor-pointer z-50"
+          onClick={toggleMenu}
+        >
           {menuOpen ? <FaTimes /> : <FaBars />}
         </div>
       </div>
 
-      {/* Mobile Menu - Slide from Right */}
+      {/* Mobile Menu - Full Page Overlay */}
       <div
-        className={`md:hidden fixed top-0 right-0 h-full w-64 bg-gradient-to-b from-zinc-800 to-zinc-400 text-white transition-transform duration-500 ease-in-out z-40 ${
+        className={`md:hidden fixed inset-0 bg-gradient-to-b from-zinc-900 to-zinc-700 text-white flex flex-col items-center justify-center space-y-10 text-2xl font-medium transform transition-transform duration-500 ease-in-out z-40 ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <ul className="flex flex-col items-center justify-center h-full space-y-8 font-medium">
-          <li><a href="#home" onClick={toggleMenu} className="hover:text-red-500 transition">Home</a></li>
-          <li><a href="#about" onClick={toggleMenu} className="hover:text-red-500 transition">About</a></li>
-          <li><a href="#collections" onClick={toggleMenu} className="hover:text-red-500 transition">Collections</a></li>
-          <li><a href="#contact" onClick={toggleMenu} className="hover:text-red-500 transition">Contact</a></li>
-        </ul>
-      </div>
-
-      {/* Overlay behind mobile menu */}
-      {menuOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+        <a href="#home" onClick={toggleMenu} className="hover:text-green-500">
+          Home
+        </a>
+        <a href="#about" onClick={toggleMenu} className="hover:text-green-500">
+          About
+        </a>
+        <a
+          href="#collections"
           onClick={toggleMenu}
-        ></div>
-      )}
+          className="hover:text-green-500"
+        >
+          Collections
+        </a>
+        <a
+          href="#contact"
+          onClick={toggleMenu}
+          className="hover:text-green-500"
+        >
+          Contact
+        </a>
+      </div>
     </nav>
   );
 }

@@ -24,7 +24,7 @@ const About = () => {
   return (
     <div
       ref={sectionRef}
-      className="min-h-screen flex flex-col items-center justify-center 
+      className="min-h-100 flex flex-col items-center justify-center 
                  px-6 sm:px-12 lg:px-24 py-16 
                  bg-gradient-to-br from-zinc-200 via-zinc-500 to-zinc-900 
                  dark:from-zinc-900 dark:via-zinc-700 dark:to-zinc-400

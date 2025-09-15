@@ -7,7 +7,6 @@ const Bigimg = () => {
     const timer = setTimeout(() => {
       setShowOverlay(false);
     }, 2000); // 2 sec ke baad overlay hatao
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -18,7 +17,7 @@ const Bigimg = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bf.png')",
+            "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('bf.png')",
         }}
       ></div>
 
@@ -30,13 +29,16 @@ const Bigimg = () => {
       ></div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl">
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-white drop-shadow-xl">
+      <div className="relative z-10 text-center px-4 sm:px-6 md:px-12 lg:px-20 max-w-6xl">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 text-white drop-shadow-xl leading-tight">
           Welcome to Our Brand
         </h2>
-        <p className="text-lg sm:text-xl md:text-2xl mb-6 text-white drop-shadow-md">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mb-6 text-white drop-shadow-md">
           Discover the latest trends in fashion
         </p>
+
+        {/* CTA Buttons */}
+      
         
       </div>
     </header>
