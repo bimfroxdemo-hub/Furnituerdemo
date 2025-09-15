@@ -8,9 +8,10 @@ import Collections from "./component/Pages/Collections";
 import Footer from "./component/Footer/Footer";
 export default function App() {
    return (
-    <div className="h-screen flex flex-col">
+    <div className=" overflow-x-hidden">
+      <main className="">
       <Header />
-      <main className="flex-1 overflow-y-auto">
+
         <section id="home">
           <Home />
         </section>
